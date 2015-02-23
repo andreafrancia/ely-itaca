@@ -1,0 +1,17 @@
+#!/usr/bin/python
+with open("itaca_N.tsv") as f:
+    lines = f.read().splitlines()
+
+lines_ok = []
+
+for line in lines:
+    if line.endswith("C.ACC.ASC"):
+        lines_ok.append(line)
+    elif line.endswith("X.ACC.ASC"):
+        x_line = line
+        c_line = line.replace("X.ACC.ASC","C.ACC.ASC")
+        if not c_line in lines_ok:
+            lines_ok.append(line)
+
+for line in lines_ok:
+    print(line)
